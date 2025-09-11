@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cath Lab Medication Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f8f9fa; }
+        h1 { text-align: center; color: #003366; }
+        input[type="text"] { width: 100%; padding: 12px; margin: 12px 0 20px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        table { border-collapse: collapse; width: 100%; background-color: white; }
+        th, td { text-align: left; padding: 10px; border: 1px solid #ddd; font-size: 14px; }
+        th { background-color: #003366; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+
+<h1>Cath Lab Comprehensive Medication Guide</h1>
+<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for a medication...">
+
+<table id="medTable">
+    <thead>
+        <tr>
+            <th>Medication</th>
+            <th>Indication</th>
+            <th>Contraindication</th>
+            <th>Administration</th>
+            <th>Concentration</th>
+            <th>Antidote</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>Adenosine</td>
+            <td>Coronary vasodilation during FFR/iFR measurement (Cath Lab use)</td>
+            <td>2nd/3rd degree AV block, sick sinus, asthma</td>
+            <td>140 mcg/kg/min IV infusion for 2–4 minutes</td>
+            <td>6 mg/2 mL or 30 mg/10 mL</td>
+            <td>Self-limited</td>
+        </tr>
+    
+        <tr>
+            <td>Adenosine (IVP for SVT)</td>
+            <td>Stable SVT conversion (Cath Lab or telemetry use)</td>
+            <td>2nd/3rd AV block, asthma, heart transplant (↑ sensitivity)</td>
+            <td>6 mg IVP → 12 mg IVP if needed</td>
+            <td>6 mg/2 mL</td>
+            <td>Self-limited</td>
+        </tr>
+    
+        <tr>
+            <td>Alteplase</td>
+            <td>Ischemic stroke, MI, PE</td>
+            <td>Active bleeding, recent surgery or trauma</td>
+            <td>0.9 mg/kg (10% bolus, rest over 60 min)</td>
+            <td>1 mg/mL</td>
+            <td>Cryoprecipitate</td>
+        </tr>
+    
+        <tr>
+            <td>Fentanyl</td>
+            <td>Procedural analgesia</td>
+            <td>Severe respiratory depression, MAOI use</td>
+            <td>25–100 mcg slow IVP</td>
+            <td>50 mcg/mL</td>
+            <td>Naloxone</td>
+        </tr>
+    
+        <tr>
+            <td>Heparin</td>
+            <td>Anticoagulation during PCI; radial spasm prevention</td>
+            <td>Active bleeding, HIT</td>
+            <td>IV bolus or radial IA 2500–3000 U</td>
+            <td>1000 U/mL</td>
+            <td>Protamine</td>
+        </tr>
+    
+        <tr>
+            <td>Milrinone</td>
+            <td>Inotrope for low-output or vasospasm</td>
+            <td>Hypotension, AS</td>
+            <td>0.375–0.75 mcg/kg/min IV</td>
+            <td>1 mg/mL</td>
+            <td>Supportive</td>
+        </tr>
+    
+        <tr>
+            <td>Nitroglycerin</td>
+            <td>Angina, coronary spasm</td>
+            <td>Hypotension, PDE5 use</td>
+            <td>100 mcg IA or 5 mcg/min IV drip</td>
+            <td>100 mcg/mL</td>
+            <td>Fluids, supportive</td>
+        </tr>
+    
+        <tr>
+            <td>Norepinephrine</td>
+            <td>Shock, hypotension</td>
+            <td>Uncorrected hypovolemia</td>
+            <td>2–10 mcg/min IV</td>
+            <td>4 mg/4 mL ampule</td>
+            <td>Phentolamine</td>
+        </tr>
+    
+        <tr>
+            <td>Verapamil</td>
+            <td>Radial artery vasospasm</td>
+            <td>Severe LV dysfunction, hypotension</td>
+            <td>2.5 mg IA</td>
+            <td>2.5 mg/2 mL</td>
+            <td>Calcium</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+<div class="footer">Searchable guide • Built for Cath Lab & Neuro Nurses • v1.0</div>
+
+<script>
+function searchTable() {
+    var input = document.getElementById("searchInput");
+    var filter = input.value.toLowerCase();
+    var table = document.getElementById("medTable");
+    var tr = table.getElementsByTagName("tr");
+    for (var i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none";
+        var td = tr[i].getElementsByTagName("td");
+        for (var j = 0; j < td.length; j++) {
+            if (td[j] && td[j].innerHTML.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                break;
+            }
+        }
+    }
+}
+</script>
+
+</body>
+</html>
